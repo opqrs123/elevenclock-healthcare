@@ -6,16 +6,12 @@ import AboutUs from "../components/AboutUs";
 import OurServices from "../components/OurServices";
 import GlobalPresence from "../components/GlobalPresence";
 import Testimonials from "../components/Testimonials";
+import AboutUsSection from "@/components/About";
 
 export default function Main() {
   return (
     <Layout>
-      <HomeSection />
-      <ProductListing />
-      <AboutUs />
-      {/* <OurServices /> */}
-      <GlobalPresence />
-      {/* <Testimonials /> */}
+      <AboutUsSection />
     </Layout>
   );
 }

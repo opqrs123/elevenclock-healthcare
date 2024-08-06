@@ -1,21 +1,17 @@
 "use client";
 import React, { useRef, useEffect, useState } from "react";
+import Image from "next/image";
 import { Package, ChevronLeft, ChevronRight, Box, Gift, Layers, ShoppingBag } from "lucide-react";
 
 const icons = [Box, Gift, Layers, ShoppingBag, Package];
 
 export default function ProductListing() {
   const products = [
-    { id: 1, name: "Product 1", description: "Description 1", icon: icons[0], color: "blue" },
-    { id: 2, name: "Product 2", description: "Description 2", icon: icons[1], color: "green" },
-    { id: 3, name: "Product 3", description: "Description 3", icon: icons[2], color: "red" },
-    { id: 4, name: "Product 4", description: "Description 4", icon: icons[3], color: "purple" },
-    { id: 5, name: "Product 5", description: "Description 5", icon: icons[4], color: "yellow" },
-    { id: 6, name: "Product 6", description: "Description 6", icon: icons[0], color: "indigo" },
-    { id: 7, name: "Product 7", description: "Description 7", icon: icons[1], color: "pink" },
-    { id: 8, name: "Product 8", description: "Description 8", icon: icons[2], color: "teal" },
-    { id: 9, name: "Product 9", description: "Description 9", icon: icons[3], color: "orange" },
-    { id: 10, name: "Product 10", description: "Description 10", icon: icons[4], color: "cyan" }
+    { id: 1, name: "Active Pharmaceutical Ingredients (APIs)", description: "Coming Soon..", icon: icons[0], color: "blue", img: "apis" },
+    { id: 2, name: "Agro Chemicals", description: "Coming Soon..", icon: icons[1], color: "green", img: "agro" },
+    { id: 3, name: "Excipients & Fine Chemicals", description: "Coming Soon..", icon: icons[2], color: "red", img: "chemical" },
+    { id: 4, name: "Pharmaceutical Pellets", description: "Coming Soon..", icon: icons[3], color: "purple", img: "capsule" },
+    { id: 5, name: "Phytochemicals", description: "Coming Soon..", icon: icons[4], color: "yellow", img: "plant" },
   ];
 
   const carouselRef = useRef(null);
@@ -74,22 +70,16 @@ export default function ProductListing() {
         <h2 className="text-4xl font-bold mb-8 text-center text-gray-800">Our Products</h2>
         <div className="relative" onMouseEnter={() => setIsAutoScrolling(false)} onMouseLeave={() => setIsAutoScrolling(true)}>
           <div ref={carouselRef} className="flex overflow-hidden scroll-smooth" style={{ scrollSnapType: "x mandatory" }}>
-            {products.map((product) => {
-              const Icon = product.icon;
-              return (
-                <div key={product.id} className="flex-none w-1/5 h-1/2 p-4 cursor-pointer" style={{ scrollSnapAlign: "start" }} onClick={() => handleProductClick(product)}>
-                  <div
-                    className={`bg-white rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105 border-t-4 border-${product.color}-500 aspect-square flex flex-col justify-center items-center`}
-                  >
-                    <div className="mb-4">
-                      <Icon className={`w-20 h-20 mb-10 text-${product.color}-500`} />
-                    </div>
-                    <h3 className="text-20 text-center text-gray-800">{product.name}</h3>
-                    {/* <p className="text-sm text-center text-gray-600 px-4">{product.description}</p> */}
+            {products.map((product) => (
+              <div key={product.id} className="flex-none w-full sm:w-1/2 md:w-1/3 lg:w-1/5 p-4 cursor-pointer" style={{ scrollSnapAlign: "start" }} onClick={() => handleProductClick(product)}>
+                <div className={`bg-white rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105 border-t-4 border-${product.color}-500 aspect-square flex flex-col justify-center items-center`}>
+                  <div className="mb-3">
+                    <Image src={`/${product.img}.png`} width={250} height={20} alt="Company Logo" className="w-20 h-20" />
                   </div>
+                  <h3 className="text-xl text-center p-1 text-gray-800">{product.name}</h3>
                 </div>
-              );
-            })}
+              </div>
+            ))}
           </div>
           <button
             onClick={() => handleScroll("left")}
