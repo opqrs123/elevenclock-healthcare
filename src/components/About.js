@@ -1,5 +1,6 @@
 "use client"
 import React from 'react';
+import Image from 'next/image';
 import { motion } from 'framer-motion';
 import { MapPin, Phone, Clock, User } from 'lucide-react';
 
@@ -38,8 +39,10 @@ const AboutUsSection = () => {
           </p>
         </div>
         <div className="relative rounded-lg shadow-lg overflow-hidden">
-          <img 
+          <Image 
             src="/lab.jpg" 
+            width={500}
+            height={500}
             alt="Pharmaceutical Lab" 
             className="w-full h-full object-cover"
           />

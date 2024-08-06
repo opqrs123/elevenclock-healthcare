@@ -65,7 +65,7 @@ const Footer = () => {
           <p className="text-sm">&copy; 2024 Elevenclock Healthcare - All Rights Reserved.</p>
           <div className="flex space-x-4 mt-4 md:mt-0">
             {['visa'].map((card) => (
-              <img key={card} src={`/cards.png`} alt={`${card} logo`} className="h-8" />
+              <Image  width={250} height={20} key={card} src={`/cards.png`} alt={`${card} logo`} className="h-8" />
             ))}
           </div>
         </div>
