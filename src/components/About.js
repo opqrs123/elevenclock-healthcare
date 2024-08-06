@@ -30,7 +30,7 @@ const AboutUsSection = () => {
             use our products with confidence and trust in the medicines.
           </p>
           <p className="text-gray-700">
-            To save and further develop patients' wellbeing by consistently delivering high 
+            To save and further develop patient&apos;s wellbeing by consistently delivering high 
             quality, protected and effective drug products and services. That meets client 
             expectations across the globe through an efficient workforce, cutting-edge 
             innovations, skilled labor force and effective management. Our unwavering 

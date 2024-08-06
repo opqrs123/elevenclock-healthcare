@@ -13,7 +13,7 @@ const Footer = () => {
               <Image src="/logo.png" width={200} height={40} alt="Mediclock Logo" className="mr-4" />
             </div>
             <p className="mb-6 text-white-300">
-              Elevenclock Healthcare isn't just a name, it's a heartbeat. We beat with the rhythm of advancement, the drone of research, and the consistent beat of high-quality medications.
+            ElevenClock Healthcare specializes in high-quality Active Pharmaceutical Ingredients (APIs), Agro Chemicals, Excipients & Fine Chemicals, Pharmaceutical Pellets, and Phytochemicals. Committed to excellence, they provide essential products for pharmaceutical manufacturing and agricultural enhancement, supporting both health and productivity across various sectors.
             </p>
             <h3 className="text-lg font-semibold mb-4">Follow Us</h3>
             <div className="flex space-x-4">
