@@ -2,10 +2,11 @@
 import React, { useRef, useEffect, useState } from "react";
 import Image from "next/image";
 import { Package, ChevronLeft, ChevronRight, Box, Gift, Layers, ShoppingBag } from "lucide-react";
-
+import { useRouter } from "next/navigation";
 const icons = [Box, Gift, Layers, ShoppingBag, Package];
 
 export default function ProductListing() {
+  
   const categories = [
     { id: 1, name: "Active Pharmaceutical Ingredients (APIs)", description: "Coming Soon..", icon: icons[0], color: "blue", img: "apis" },
     { id: 2, name: "Agro Chemicals", description: "Coming Soon..", icon: icons[1], color: "green", img: "agro" },
@@ -18,6 +19,7 @@ export default function ProductListing() {
   const [isAutoScrolling, setIsAutoScrolling] = useState(true);
   const [activeProduct, setActiveProduct] = useState(null);
   const [currentPage, setCurrentPage] = useState(0);
+  const router = useRouter()
 
   const itemsPerPage = 5;
   const pageCount = Math.ceil(categories.length / itemsPerPage);
@@ -55,8 +57,10 @@ export default function ProductListing() {
     }
   };
 
-  const handleProductClick = (product) => {
-    setActiveProduct(product);
+  const handleProductClick = (e) => {
+    // setActiveProduct(product);
+    e.preventDefault()
+    router.push('/products/0')
   };
 
   const handleDotClick = (index) => {
@@ -71,7 +75,8 @@ export default function ProductListing() {
         <div className="relative" onMouseEnter={() => setIsAutoScrolling(false)} onMouseLeave={() => setIsAutoScrolling(true)}>
           <div ref={carouselRef} className="flex overflow-hidden scroll-smooth" style={{ scrollSnapType: "x mandatory" }}>
             {categories.map((product) => (
-              <div key={product.id} className="flex-none w-full sm:w-1/2 md:w-1/3 lg:w-1/5 p-4 cursor-pointer" style={{ scrollSnapAlign: "start" }} onClick={() => handleProductClick(product)}>
+              
+              <div key={product.id} className="flex-none w-full sm:w-1/2 md:w-1/3 lg:w-1/5 p-4 cursor-pointer" style={{ scrollSnapAlign: "start" }} onClick={(e) => handleProductClick(e)}>
                 <div className={`bg-white rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105 border-t-4 border-${product.color}-500 aspect-square flex flex-col justify-center items-center`}>
                   <div className="mb-3">
                     <Image src={`/${product.img}.png`} width={250} height={20} alt="Company Logo" className="w-20 h-20" />
@@ -79,6 +84,7 @@ export default function ProductListing() {
                   <h3 className="text-xl text-center p-1 text-gray-800">{product.name}</h3>
                 </div>
               </div>
+              
             ))}
           </div>
           <button

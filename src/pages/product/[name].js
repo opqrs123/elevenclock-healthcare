@@ -6,10 +6,15 @@ import Link from 'next/link';
 import { ArrowBigLeft, ArrowLeftCircle, ArrowLeftCircleIcon } from 'lucide-react';
 import Layout from '@/components/Layout';
 import ProductNavbar from '@/components/ProductNavbar';
-import { products } from '@/utils/vars/products';
+// import { products } from '@/utils/vars/products';
+import { apis } from '@/utils/vars/products/Active Pharmaceutical Ingredients';
+import { acs } from '@/utils/vars/products/Agro_Chemicals';
+import { efcs } from '@/utils/vars/products/Excipients & Fine Chemicals';
+import { pps } from '@/utils/vars/products/Pharmaceutical Pellet\'s';
+import { pcs } from '@/utils/vars/products/Phytochemicals';
 
 // Mock data (replace with actual data fetching in a real application)
-
+const products = [...apis,...acs,...efcs,...pps,...pcs]
 
 export default function ProductDetails() {
   const router = useRouter();
@@ -37,9 +42,9 @@ export default function ProductDetails() {
               <p className="mt-2 text-gray-600">{product.description}</p>
             </div>
           </div>
-          <div className="md:flex justify-center">
-              <img className="h-48 w-full object-cover md:w-48 justify-center" src={product.image} alt={product.name} />
-            </div>
+          {/* <div className="md:flex justify-center">
+              <img className="md:w-48 justify-center m-6" src={product.image} alt={product.name} />
+            </div> */}
 
           <div className="border-t border-gray-200 px-4 py-5 sm:p-0">
             <dl className="sm:divide-y sm:divide-gray-200">

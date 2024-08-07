@@ -81,7 +81,7 @@ export default function MainNavbar() {
     { label: 'Home', href: '/' },
     {
       label: 'Products',
-      href: 'products/0',
+      href: '/products/0',
       // children: [
       //   { label: 'Active Pharmaceutical Ingredients (APIs)', href: '#' },
       //   { label: 'Agro Chemicals', href: '#' },
@@ -90,7 +90,7 @@ export default function MainNavbar() {
       //   { label: 'Phytochemicals', href: '#' },
       // ],
     },
-    { label: 'About', href: 'about' },
+    { label: 'About', href: '/about' },
     // {
     //   label: 'Services',
     //   href: 'services',
@@ -102,7 +102,7 @@ export default function MainNavbar() {
     // },
     {
       label: 'Global Presence',
-      href: '#globalpresence',
+      href: '/#globalpresence',
       // children: [
       //   { label: 'North America', href: 'north-america', icon: Globe },
       //   { label: 'Europe', href: 'europe', icon: Globe },
@@ -122,7 +122,7 @@ export default function MainNavbar() {
           {/* <a href="#" className={`font-bold text-xl ${isSticky ? 'text-cyan-500' : 'text-white'}`}>Logo</a> */}
           <button
             onClick={() => setIsMenuOpen(!isMenuOpen)}
-            className={`focus:outline-none ${isSticky ? 'text-cyan-500' : 'text-white'}`}
+            className={`focus:outline-none ${isSticky ? 'text-white-500' : 'text-white'}`}
           >
             {isMenuOpen ? <X size={24} /> : <Menu size={24} />}
           </button>

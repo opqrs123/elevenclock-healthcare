@@ -7,7 +7,7 @@ import { ArrowBigLeft, ArrowLeftCircle, ArrowLeftCircleIcon } from 'lucide-react
 export default function ProductNavbar(props){
     return(
         <div className="flex justify-between items-center mb-6">
-        <Link href="/products" className="group flex items-center space-x-2 text-blue-600 hover:text-blue-800 transition-colors duration-300">
+        <Link href="/products/0" className="group flex items-center space-x-2 text-blue-600 hover:text-blue-800 transition-colors duration-300">
             <div className="relative">
               <ArrowLeftCircleIcon 
                 className="w-8 h-8 transition-all duration-300 group-hover:scale-110" 

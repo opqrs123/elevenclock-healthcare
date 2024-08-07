@@ -1,55 +1,27 @@
 "use client"
 import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Search } from 'lucide-react';
+import { Search, ArrowUpRight } from 'lucide-react';
 import Link from 'next/link';
 import Image from 'next/image';
 import { categories } from '@/utils/vars/categories';
-import { useParams } from 'next/navigation';
-import { products } from '@/utils/vars/products';
-
-// const products = [
-//   { name: 'Acetone', chemicalName: 'Propanone', category: 'Solvents' },
-//   { name: 'Benzene', chemicalName: 'Cyclohexa-1,3,5-triene', category: 'Aromatic Compounds' },
-//   { name: 'Chloroform', chemicalName: 'Trichloromethane', category: 'Halogenated Compounds' },
-//   { name: 'Ethanol', chemicalName: 'Ethyl alcohol', category: 'Alcohols' },
-//   { name: 'Methanol', chemicalName: 'Methyl alcohol', category: 'Alcohols' },
-//   { name: 'Toluene', chemicalName: 'Methylbenzene', category: 'Aromatic Compounds' },
-//   { name: 'Hexane', chemicalName: 'n-Hexane', category: 'Alkanes' },
-//   { name: 'Diethyl ether', chemicalName: 'Ethoxyethane', category: 'Ethers' },
-// ];
- 
+import { apis } from '@/utils/vars/products/Active Pharmaceutical Ingredients';
+import { acs } from '@/utils/vars/products/Agro_Chemicals';
+import { efcs } from '@/utils/vars/products/Excipients & Fine Chemicals';
+import { pps } from '@/utils/vars/products/Pharmaceutical Pellet\'s';
+import { pcs } from '@/utils/vars/products/Phytochemicals';
+const products = [...apis, ...acs, ...efcs, ...pps, ...pcs];
 
 const newCategories = [
-  { id: 0, name: 'All',img:'apis'},
+  { id: 0, name: 'All', img: 'apis' },
   ...categories
 ];
 
-// Array.from(new Set(products.map(p => p.category))).map(category => ({
-//     id: category.toLowerCase().replace(/\s+/g, '-'),
-//     name: category,
-//     icon: getCategoryIcon(category),
-//   }))
-
-// function getCategoryIcon(category) {
-//   switch (category) {
-//     case 'Solvents': return '💧';
-//     case 'Aromatic Compounds': return '💍';
-//     case 'Halogenated Compounds': return '🧂';
-//     case 'Alcohols': return '🍸';
-//     case 'Alkanes': return '⛽';
-//     case 'Ethers': return '🔗';
-//     default: return '🧪';
-//   }
-// }
-
-const CategoriesTab = ({categoryId}) => {
-  // const {categoryId} = useParams();
+const CategoriesTab = ({ categoryId }) => {
   const [activeCategory, setActiveCategory] = useState(0);
   const [searchTerm, setSearchTerm] = useState('');
   const [filteredProducts, setFilteredProducts] = useState(products);
-  // .toLowerCase().replace(/\s+/g, '-')
-  
+
   useEffect(() => {
     const filtered = products.filter(product => 
       (activeCategory === 0 || product.categoryId === activeCategory) &&
@@ -59,10 +31,23 @@ const CategoriesTab = ({categoryId}) => {
     setFilteredProducts(filtered);
   }, [activeCategory, searchTerm]);
 
+  const groupProductsByAlphabet = (products) => {
+    return products.reduce((acc, product) => {
+      const firstLetter = product.name[0].toUpperCase();
+      if (!acc[firstLetter]) {
+        acc[firstLetter] = [];
+      }
+      acc[firstLetter].push(product);
+      return acc;
+    }, {});
+  };
+
+  const groupedProducts = groupProductsByAlphabet(filteredProducts);
+
   return (
     <div className="max-w-7xl mx-auto mt-12 px-4 sm:px-6 lg:px-8 mb-20">
       <div className="bg-white shadow-lg rounded-xl overflow-hidden">
-        <div className="p-6 bg-slate-300">
+        <div className="p-6 bg-sky-600">
           <h1 className="text-3xl font-bold text-white mb-4">Chemical Products Catalog</h1>
           <div className="relative">
             <input
@@ -92,7 +77,6 @@ const CategoriesTab = ({categoryId}) => {
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
               >
-                {/* <span className="text-xl"><Image src={`/${category.img}.png`} width={20} height={20} alt="Company Logo" className="w-20 h-20" /></span> */}
                 <span>{category.name}</span>
               </motion.button>
             ))}
@@ -100,31 +84,37 @@ const CategoriesTab = ({categoryId}) => {
         </div>
         <div className="p-6">
           <AnimatePresence>
-            {filteredProducts.length > 0 ? (
-              <motion.div
+            {Object.keys(groupedProducts).length > 0 ? (
+              <div
                 key={activeCategory + searchTerm}
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
                 exit={{ opacity: 0 }}
                 transition={{ duration: 0.3 }}
-                className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4"
               >
-                {filteredProducts.map((product, index) => (
-                  <Link href={`/product/${encodeURIComponent(product.name)}`} key={product.name}><motion.div
-                    key={product.name}
-                    className="bg-gray-50 p-3 rounded-lg shadow-md hover:shadow-lg transition-shadow duration-300"
-                    initial={{ opacity: 0, y: 20 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    transition={{ duration: 0.3, delay: index * 0.1 }}
-                  >
-                    <h3 className="font-semibold text-lg text-gray-800">{product.name}</h3>
-                    {/* <p className="text-sm text-gray-600">{product.chemicalName}</p>
-                    <p className="text-xs text-blue-600 mt-2 bg-blue-100 inline-block px-2 py-1 rounded-full">{product.category}</p> */}
-                  </motion.div>
-                  </Link>
+                {Object.entries(groupedProducts).sort().map(([letter, products]) => (
+                  <div key={letter} className="mb-8">
+                    <h2 className="text-2xl font-bold text-gray-800 mb-4">{letter}</h2>
+                    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+                      {products.map((product, index) => (
+                        <Link href={`/product/${encodeURIComponent(product.name)}`} key={product.name}>
+                          <div
+                            className="group bg-gray-50 p-3 rounded-lg shadow-md hover:shadow-lg transition-shadow duration-300 cursor-pointer"
+                            initial={{ opacity: 0, y: 20 }}
+                            animate={{ opacity: 1, y: 0 }}
+                            transition={{ duration: 0.3, delay: index * 0.1 }}
+                          >
+                            <div className="flex items-center justify-between">
+                              <h3 className="font-sm text-lg text-blue-600 group-hover:underline">{product.name}</h3>
+                              <ArrowUpRight className="text-gray-400 group-hover:text-blue-600" size={16} />
+                            </div>
+                          </div>
+                        </Link>
+                      ))}
+                    </div>
+                  </div>
                 ))}
-              </motion.div>
-              
+              </div>
             ) : (
               <motion.p
                 initial={{ opacity: 0 }}
