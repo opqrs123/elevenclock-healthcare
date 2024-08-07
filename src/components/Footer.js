@@ -1,6 +1,7 @@
 import React from 'react';
 import Image from 'next/image';
 import { Facebook, Twitter, Instagram, Linkedin } from 'lucide-react';
+import Link from 'next/link';
 
 const Footer = () => {
   return (
@@ -29,7 +30,7 @@ const Footer = () => {
             <h3 className="text-lg font-semibold mb-6">Categories</h3>
             <ul className="space-y-3">
               {['Active Pharmaceutical Ingredients', 'Agro Chemicals', 'Excipients & Fine Chemicals', 'Pharmaceutical Pellets', 'Phytochemicals'].map((item) => (
-                <li key={item}><a href="/products/0" className="hover:underline hover:text-gray-200 transition duration-300">{item}</a></li>
+                <li key={item}><Link href="/products/0" className="hover:underline hover:text-gray-200 transition duration-300">{item}</Link></li>
               ))}
             </ul>
           </div>

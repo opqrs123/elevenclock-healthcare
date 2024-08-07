@@ -110,7 +110,7 @@ const CategoriesTab = ({categoryId}) => {
                 className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4"
               >
                 {filteredProducts.map((product, index) => (
-                  <Link href={`/product/${encodeURIComponent(product.name)}`}><motion.div
+                  <Link href={`/product/${encodeURIComponent(product.name)}`} key={product.name}><motion.div
                     key={product.name}
                     className="bg-gray-50 p-3 rounded-lg shadow-md hover:shadow-lg transition-shadow duration-300"
                     initial={{ opacity: 0, y: 20 }}
