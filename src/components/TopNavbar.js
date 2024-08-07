@@ -15,7 +15,7 @@ export default function TopNavbar() {
         <div className="flex flex-col sm:flex-row items-center space-y-2 sm:space-y-0 sm:space-x-6">
           <div className="flex items-center space-x-2">
             <Phone size={18} />
-            <span className="text-sm">+91 9909097015</span>
+            <span className="text-sm">+91 9313039906</span>
           </div>
           <div className="flex items-center space-x-2">
             <Mail size={18} />

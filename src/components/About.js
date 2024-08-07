@@ -51,29 +51,16 @@ const AboutUsSection = () => {
       </div>
 
       <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-12">
-        <div className="bg-white h-auto rounded-lg shadow-lg p-6">
+      <div className="bg-white rounded-lg shadow-lg p-6">
           <h3 className="text-xl font-semibold mb-4 flex items-center text-blue-600">
-            <MapPin className="mr-2" /> Address
+            <User className="mr-2" /> Our Directors
           </h3>
-          <p className="mb-7">314, Silver Trade Center, VIP Cir, near Moon Garden, Uttran, Surat, Gujarat 394105</p>
-          <p className="flex items-center">
-            <Phone className="mr-2 text-blue-600" />
-            +91 9726073634
-          </p>
-          <div className="bg-white p-6 ">
-        {/* <h3 className="text-xl font-semibold mb-4 text-blue-600">Location</h3> */}
-        <div className="aspect-w-16 aspect-h-9">
-          <iframe 
-            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3669.531172887079!2d72.53775607631549!3d23.11425207910971!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x395e8340ebe5d7cb%3A0x4b3ffb517276bef6!2sGanesh%20Glory%2011!5e0!3m2!1sen!2sin!4v1722937871816!5m2!1sen!2sin" 
-            width="100%" 
-            height="100%" 
-            style={{border:0}} 
-            allowFullScreen="" 
-            loading="lazy" 
-            referrerPolicy="no-referrer-when-downgrade"
-          ></iframe>
-           </div>
-      </div>
+          {['Pratik Patel', 'Ruturajsinh Kumpavat', 'Nayan Patel', 'Hitesh Patel'].map((director) => (
+            <div key={director} className="mb-4">
+              <h4 className="font-medium">{director}</h4>
+              <p className="text-sm text-gray-600">Director of Operations</p>
+            </div>
+          ))}
         </div>
         <div className="bg-white rounded-lg shadow-lg p-6">
           <h3 className="text-xl font-semibold mb-4 flex items-center text-blue-600">
@@ -90,17 +77,32 @@ const AboutUsSection = () => {
             ))}
           </div>
         </div>
-        <div className="bg-white rounded-lg shadow-lg p-6">
+        <div className="bg-white h-auto rounded-lg shadow-lg p-6">
           <h3 className="text-xl font-semibold mb-4 flex items-center text-blue-600">
-            <User className="mr-2" /> Our Directors
+            <MapPin className="mr-2" /> Address
           </h3>
-          {['Pratik Patel', 'Ruturajsinh Kumpavat', 'Nayan Patel', 'Hitesh Patel'].map((director) => (
-            <div key={director} className="mb-4">
-              <h4 className="font-medium">{director}</h4>
-              <p className="text-sm text-gray-600">Director of Operations</p>
-            </div>
-          ))}
+          <p className="mb-7">B-1308, Ganesh Glory 11, Gota, Ahmedabad, Gujarat - 382481</p>
+          <p className="flex items-center">
+            <Phone className="mr-2 text-blue-600" />
+            +91 9313039906
+          </p>
+          <div className="bg-white p-6 ">
+        {/* <h3 className="text-xl font-semibold mb-4 text-blue-600">Location</h3> */}
+        <div className="aspect-w-16 aspect-h-9">
+          <iframe 
+            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3669.531172887079!2d72.53775607631549!3d23.11425207910971!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x395e8340ebe5d7cb%3A0x4b3ffb517276bef6!2sGanesh%20Glory%2011!5e0!3m2!1sen!2sin!4v1722937871816!5m2!1sen!2sin" 
+            width="100%" 
+            height="100%" 
+            style={{border:0}} 
+            allowFullScreen="" 
+            loading="lazy" 
+            referrerPolicy="no-referrer-when-downgrade"
+          ></iframe>
+           </div>
+      </div>
         </div>
+        
+        
       </div>
 
       

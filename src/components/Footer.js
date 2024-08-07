@@ -29,7 +29,7 @@ const Footer = () => {
             <h3 className="text-lg font-semibold mb-6">Categories</h3>
             <ul className="space-y-3">
               {['Active Pharmaceutical Ingredients', 'Agro Chemicals', 'Excipients & Fine Chemicals', 'Pharmaceutical Pellets', 'Phytochemicals'].map((item) => (
-                <li key={item}><a href="#" className="hover:underline hover:text-gray-200 transition duration-300">{item}</a></li>
+                <li key={item}><a href="/products/0" className="hover:underline hover:text-gray-200 transition duration-300">{item}</a></li>
               ))}
             </ul>
           </div>
@@ -38,8 +38,8 @@ const Footer = () => {
           <div>
             <h3 className="text-lg font-semibold mb-6">Useful Links</h3>
             <ul className="space-y-3">
-              {['About Us', 'Privacy Policy', 'Terms & Conditions', 'Global Presence', 'Blog', 'Contacts'].map((item) => (
-                <li key={item}><a href="#" className="hover:underline hover:text-gray-200 transition duration-300">{item}</a></li>
+              {['About Us', 'Global Presence', 'Contacts'].map((item) => (
+                <li key={item}><a href={item==="Global Presence"?`/#globalpresence`:`/about`} className="hover:underline hover:text-gray-200 transition duration-300">{item}</a></li>
               ))}
             </ul>
           </div>
@@ -54,7 +54,7 @@ const Footer = () => {
               </div>
               <div>
                 <p>Email: <a href="mailto:sales@elevenclockhealthcare.com" className="hover:underline">sales@elevenclockhealthcare.com</a></p>
-                <p>Phone: <a href="tel:+919909097015" className="hover:underline">+919909097015</a></p>
+                <p>Phone: <a href="tel:+919313039906" className="hover:underline">+91 9313039906</a></p>
               </div>
             </div>
           </div>

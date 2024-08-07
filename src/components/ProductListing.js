@@ -6,7 +6,7 @@ import { Package, ChevronLeft, ChevronRight, Box, Gift, Layers, ShoppingBag } fr
 const icons = [Box, Gift, Layers, ShoppingBag, Package];
 
 export default function ProductListing() {
-  const products = [
+  const categories = [
     { id: 1, name: "Active Pharmaceutical Ingredients (APIs)", description: "Coming Soon..", icon: icons[0], color: "blue", img: "apis" },
     { id: 2, name: "Agro Chemicals", description: "Coming Soon..", icon: icons[1], color: "green", img: "agro" },
     { id: 3, name: "Excipients & Fine Chemicals", description: "Coming Soon..", icon: icons[2], color: "red", img: "chemical" },
@@ -20,7 +20,7 @@ export default function ProductListing() {
   const [currentPage, setCurrentPage] = useState(0);
 
   const itemsPerPage = 5;
-  const pageCount = Math.ceil(products.length / itemsPerPage);
+  const pageCount = Math.ceil(categories.length / itemsPerPage);
 
   useEffect(() => {
     const carousel = carouselRef.current;
@@ -70,7 +70,7 @@ export default function ProductListing() {
         <h2 className="text-4xl font-bold mb-8 text-center text-gray-800">Our Products</h2>
         <div className="relative" onMouseEnter={() => setIsAutoScrolling(false)} onMouseLeave={() => setIsAutoScrolling(true)}>
           <div ref={carouselRef} className="flex overflow-hidden scroll-smooth" style={{ scrollSnapType: "x mandatory" }}>
-            {products.map((product) => (
+            {categories.map((product) => (
               <div key={product.id} className="flex-none w-full sm:w-1/2 md:w-1/3 lg:w-1/5 p-4 cursor-pointer" style={{ scrollSnapAlign: "start" }} onClick={() => handleProductClick(product)}>
                 <div className={`bg-white rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105 border-t-4 border-${product.color}-500 aspect-square flex flex-col justify-center items-center`}>
                   <div className="mb-3">

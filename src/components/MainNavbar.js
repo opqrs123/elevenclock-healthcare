@@ -81,14 +81,14 @@ export default function MainNavbar() {
     { label: 'Home', href: '/' },
     {
       label: 'Products',
-      href: 'products',
-      children: [
-        { label: 'Active Pharmaceutical Ingredients (APIs)', href: '#' },
-        { label: 'Agro Chemicals', href: '#' },
-        { label: 'Excipients & Fine Chemicals', href: '#' },
-        { label: 'Pharmaceutical Pellets', href: '#' },
-        { label: 'Phytochemicals', href: '#' },
-      ],
+      href: 'products/0',
+      // children: [
+      //   { label: 'Active Pharmaceutical Ingredients (APIs)', href: '#' },
+      //   { label: 'Agro Chemicals', href: '#' },
+      //   { label: 'Excipients & Fine Chemicals', href: '#' },
+      //   { label: 'Pharmaceutical Pellets', href: '#' },
+      //   { label: 'Phytochemicals', href: '#' },
+      // ],
     },
     { label: 'About', href: 'about' },
     // {
